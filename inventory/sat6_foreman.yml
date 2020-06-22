@@ -1,4 +1,4 @@
-# my.foreman.yml
+# sat6.foreman.yml
 plugin: foreman
 url: https://sat6.demolab.local
 user: pharriso-sat-tower
