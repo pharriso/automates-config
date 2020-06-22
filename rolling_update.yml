@@ -10,12 +10,12 @@
       failed_when: yum_updates.rc == 1
       changed_when: false
 
-    - name: include snapshot if patches available
+    - name: take vmware snapshot if we need to patch
       include_role: 
         name: vm_snapshot
       when: yum_updates.rc == 100
 
-    - name: remove server from loadbalancer pool
+    - name: offline server in loadbalancer pool
       bigip_pool_member:
         provider:
           server: "{{ f5_server }}"
@@ -27,12 +27,12 @@
         address: "{{ inventory_hostname }}"
       delegate_to: localhost
         
-    - name: include patch and reboot if patches available
+    - name: patch and reboot
       include_role: 
         name: patch_reboot
       when: yum_updates.rc == 100
       
-    - name: add server back to loadbalancer pool
+    - name: add server to loadbalancer pool
       bigip_pool_member:
         provider:
           server: "{{ f5_server }}"
