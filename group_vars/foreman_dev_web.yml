@@ -1,0 +1,2 @@
+ntp_server_list:
+  - 2.rhel.pool.ntp.org
