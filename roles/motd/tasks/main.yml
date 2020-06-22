@@ -1,0 +1,10 @@
+---
+
+- name: copy /etc/motd in place
+  copy:
+    src: motd
+    dest: /etc/motd
+    mode: 0644
+    owner: root
+    group: root
+  notify: config change

@@ -1,0 +1,32 @@
+---
+
+- name: ensure chrony is disabled and stopped
+  service:
+    name: chronyd
+    state: stopped
+    enabled: false
+
+- name: install ntp
+  yum:
+    name: ntp
+    state: installed
+  notify: 
+    - config change
+
+- name: template out ntp.conf
+  template:
+    src: ntp.conf.j2
+    dest: /etc/ntp.conf
+  notify:
+    - config change
+    - restart ntpd
+
+- name: start & enable ntpd
+  service:
+    name: ntpd
+    state: started
+    enabled: true
+  notify: 
+    - config change
+
+

@@ -1,0 +1,12 @@
+---
+
+- name: ensure correct permissions and ownership of /root
+  file:
+    path: /root
+    state: directory
+    mode: 0550
+    owner: root
+    group: root
+  notify:
+    - config change
+

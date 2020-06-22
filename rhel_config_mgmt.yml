@@ -1,0 +1,11 @@
+---
+
+- name: configuration management example playbook
+  hosts: all
+  roles:
+  - motd
+  - { role: chrony, when: "ansible_distribution_major_version == '8'" }
+  - { role: ntpd, when: "ansible_distribution_major_version == '7'" }
+  - sshd
+  - selinux
+  - root_protection

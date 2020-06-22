@@ -1,0 +1,13 @@
+---
+
+selinux_policy: targeted
+selinux_state: enforcing
+
+sshd_permit_root_login: without-password
+sshd_password_authentication: 'yes'
+
+ntp_server_list:
+  - 0.rhel.pool.ntp.org
+  - 1.rhel.pool.ntp.org
+  - 2.rhel.pool.ntp.org
+  - 3.rhel.pool.ntp.org

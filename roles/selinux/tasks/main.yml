@@ -1,0 +1,9 @@
+---
+
+- name: set selinux to the correct state
+  selinux:
+    policy: "{{ selinux_policy }}"
+    state: "{{ selinux_state }}"
+  notify:
+    - config change
+

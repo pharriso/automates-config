@@ -1,0 +1,11 @@
+---
+
+- name: config change
+  debug:
+    msg: "configuration change detected"
+
+- name: restart ntpd
+  service:
+    name: ntpd
+    state: restarted
+  tags: ntp

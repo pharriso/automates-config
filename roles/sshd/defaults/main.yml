@@ -1,0 +1,4 @@
+---
+
+sshd_permit_root_login: without-password
+sshd_password_authentication: 'yes'

@@ -1,0 +1,19 @@
+---
+
+- name: ensure sshd is enabled and running
+  service:
+    name: sshd
+    state: started
+    enabled: yes
+
+- name: template out sshd config
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    mode: 0600
+    owner: root
+    group: root
+  notify: 
+    - config change
+    - restart sshd
+

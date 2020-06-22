@@ -1,0 +1,6 @@
+# my.foreman.yml
+plugin: foreman
+url: https://sat6.demolab.local
+user: pharriso-sat-tower
+password: Redhat123
+validate_certs: False
