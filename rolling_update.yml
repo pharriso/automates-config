@@ -1,0 +1,45 @@
+---
+- hosts: all
+  serial: "{{ concurrent_hosts | default('100%') }}"
+  tasks:
+    - name: check for available updates
+      command: yum check-update
+      args:
+        warn: false
+      register: yum_updates
+      failed_when: yum_updates.rc == 1
+      changed_when: false
+
+    - name: include snapshot if patches available
+      include_role: 
+        name: vm_snapshot
+      when: yum_updates.rc == 100
+
+    - name: remove server from loadbalancer pool
+      bigip_pool_member:
+        provider:
+          server: "{{ f5_server }}"
+          server_port: "8443"
+          validate_certs: "no"
+        pool: "ansible_http_pool"
+        state: forced_offline
+        port: 80
+        address: "{{ inventory_hostname }}"
+      delegate_to: localhost
+        
+    - name: include patch and reboot if patches available
+      include_role: 
+        name: patch_reboot
+      when: yum_updates.rc == 100
+      
+    - name: add server back to loadbalancer pool
+      bigip_pool_member:
+        provider:
+          server: "{{ f5_server }}"
+          server_port: "8443"
+          validate_certs: "no"
+        pool: "ansible_http_pool"
+        state: enabled
+        port: 80
+        address: "{{ inventory_hostname }}"
+      delegate_to: localhost

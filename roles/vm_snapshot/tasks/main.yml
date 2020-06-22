@@ -1,0 +1,11 @@
+---
+
+- name: take snapshot of vmware vm
+  vmware_guest_snapshot:
+    datacenter: "{{ vmware_datacenter }}"
+    folder: "{{ vmware_folder }}"
+    name: "{{ inventory_hostname }}"
+    state: present
+    snapshot_name: "{{ snapshot_description }}"
+    description: "{{ snapshot_description }}"
+  delegate_to: localhost

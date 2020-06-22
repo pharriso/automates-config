@@ -1,0 +1,13 @@
+---
+
+- name: apply a couple of patches to save time
+  yum:
+    name: 
+      - kernel
+      - tuned
+    state: latest
+  register: patched
+
+- name: reboot server if patches applied
+  reboot:
+  when: patched is changed

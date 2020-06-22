@@ -9,3 +9,6 @@ sshd_password_authentication: 'yes'
 ntp_server_list:
   - 0.rhel.pool.ntp.org
   - 1.rhel.pool.ntp.org
+
+vmware_folder: ansible_demo
+vmware_datacenter: demolab
