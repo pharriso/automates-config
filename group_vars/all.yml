@@ -12,3 +12,5 @@ ntp_server_list:
 
 vmware_folder: ansible_demo
 vmware_datacenter: demolab
+
+f5_server: f5.demolab.local
