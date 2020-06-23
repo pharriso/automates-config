@@ -1,0 +1,6 @@
+---
+
+- name: patch and reboot rhel servers
+  hosts: all
+  roles:
+  - patch_reboot
