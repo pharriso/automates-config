@@ -6,4 +6,4 @@
     value: "{{ item.value }}"
     state: present
     reload: true
-  loop: sysctl_params
+  loop: "{{ sysctl_params }}"
