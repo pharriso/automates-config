@@ -1,0 +1,2 @@
+sysctl_params:
+  - {"name": "net.ipv4.conf.default.rp_filter", "value": "0"}
