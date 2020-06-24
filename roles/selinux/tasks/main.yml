@@ -4,6 +4,3 @@
   selinux:
     policy: "{{ selinux_policy }}"
     state: "{{ selinux_state }}"
-  notify:
-    - config change
-
