@@ -1,5 +1,0 @@
----
-
-- name: config change
-  debug:
-    msg: "configuration change detected"

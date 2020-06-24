@@ -4,15 +4,12 @@
   yum:
     name: chrony
     state: installed
-  notify: 
-    - config change
 
 - name: template out chrony.conf
   template:
     src: chrony.conf.j2
     dest: /etc/chrony.conf
   notify:
-    - config change
     - restart chrony
 
 - name: start & enable chrony
@@ -20,7 +17,3 @@
     name: chronyd
     state: started
     enabled: true
-  notify: 
-    - config change
-
-

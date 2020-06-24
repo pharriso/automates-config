@@ -14,6 +14,5 @@
     owner: root
     group: root
   notify: 
-    - config change
     - restart sshd
 

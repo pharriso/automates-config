@@ -10,6 +10,10 @@ ntp_server_list:
   - 0.rhel.pool.ntp.org
   - 1.rhel.pool.ntp.org
 
+sysctl_params:
+  - {"name": "net.ipv4.conf.default.log_martians", "value": "1"}
+  - {"name": "net.ipv4.conf.default.rp_filter", "value": "1"}
+
 vmware_folder: ansible_demo
 vmware_datacenter: demolab
 

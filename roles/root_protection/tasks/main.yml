@@ -7,6 +7,3 @@
     mode: 0550
     owner: root
     group: root
-  notify:
-    - config change
-

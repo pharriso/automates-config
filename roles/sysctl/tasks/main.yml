@@ -1,0 +1,9 @@
+---
+
+- name: set kernel paramters
+  sysctl:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    state: present
+    reload: true
+  loop: sysctl_params

@@ -10,15 +10,12 @@
   yum:
     name: ntp
     state: installed
-  notify: 
-    - config change
 
 - name: template out ntp.conf
   template:
     src: ntp.conf.j2
     dest: /etc/ntp.conf
   notify:
-    - config change
     - restart ntpd
 
 - name: start & enable ntpd
@@ -26,7 +23,3 @@
     name: ntpd
     state: started
     enabled: true
-  notify: 
-    - config change
-
-

@@ -1,9 +1,5 @@
 ---
 
-- name: config change
-  debug:
-    msg: "configuration change detected"
-
 - name: restart chrony
   service:
     name: chronyd
