@@ -1,0 +1,15 @@
+plugin: amazon.aws.aws_ec2
+regions:
+  - eu-west-1
+exclude_filters:
+- tag:Name:
+  - 'ansible-tower'
+- tag:Name:
+  - 'gitlab-runner'
+keyed_groups:
+  # Add e.g. x86_64 hosts to an arch_x86_64 group
+  - prefix: arch
+    key: 'architecture'
+  # Add hosts to tag_Name_Value groups for each Name/Value tag pair
+  - prefix: tag
+    key: tags
