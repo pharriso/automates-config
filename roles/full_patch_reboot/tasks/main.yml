@@ -1,0 +1,11 @@
+---
+
+- name: apply all available patches
+  yum:
+    name: '*'
+    state: latest
+  register: patched
+
+- name: reboot server if patches applied
+  reboot:
+  when: patched is changed
