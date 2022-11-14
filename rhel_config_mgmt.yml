@@ -2,7 +2,6 @@
 
 - name: configuration management for rhel
   hosts: all
-  become: true
   roles:
   - motd
   - sshd
